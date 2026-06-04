@@ -1,0 +1,144 @@
+<section class="hero" aria-label="Hero section">
+
+  <!-- Ambient background elements -->
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__orb hero__orb--1"></div>
+    <div class="hero__orb hero__orb--2"></div>
+    <div class="hero__noise"></div>
+  </div>
+
+  <div class="container hero__container">
+
+    <!-- Left: Text content -->
+    <div class="hero__content">
+
+      <div class="hero__eyebrow" data-aos="fade-down" data-aos-delay="0">
+        <span class="hero__avail-dot" aria-hidden="true"></span>
+        Available for opportunities · Abu Dhabi , UAE &amp; Remote
+      </div>
+
+      <h1 class="hero__title" data-aos="fade-up" data-aos-delay="80">
+        Hi, I'm<br>
+        <span class="hero__name">Rohini Gaikwad</span>
+      </h1>
+
+      <div class="hero__role" aria-live="polite" aria-label="Current role" data-aos="fade-up" data-aos-delay="140">
+        <span class="hero__role-prefix">—&nbsp;</span>
+        <span class="hero__role-text">{{ displayText() }}</span><span
+          class="hero__cursor"
+          [class.hero__cursor--visible]="showCursor()"
+          aria-hidden="true">|</span>
+      </div>
+
+     <p class="hero__bio" data-aos="fade-up" data-aos-delay="180">
+  Frontend Engineer with <strong>3.6+ years of experience</strong> building
+  scalable, high-performance web applications using
+  <strong>Angular, React, TypeScript, and JavaScript</strong>.
+  Currently based in <strong>Abu Dhabi, UAE</strong>.
+</p>
+
+      <!-- Stats -->
+      <div class="hero__stats" data-aos="fade-up" data-aos-delay="220">
+        <div class="hero__stat">
+          <span class="hero__stat-num">3.6</span>
+          <span class="hero__stat-unit">yrs</span>
+          <span class="hero__stat-label">experience</span>    
+        </div>
+
+        
+        
+       
+      </div>
+
+      <!-- CTA row -->
+      <div class="hero__actions" data-aos="fade-up" data-aos-delay="260">
+        <a href="#project-section" class="btn btn-primary">
+          View My Work
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/rohini-gaikwad7057/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline"
+          aria-label="LinkedIn profile (opens in new tab)">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+          LinkedIn
+        </a>
+        <a
+          href="https://github.com/rohinigaikwad7057"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline"
+          aria-label="GitHub profile (opens in new tab)">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          GitHub
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Right: Profile image with floating badges -->
+    <div class="hero__visual" data-aos="fade-left" data-aos-delay="200">
+
+      <div class="hero__image-frame">
+        <div class="hero__ring hero__ring--outer" aria-hidden="true"></div>
+        <div class="hero__ring hero__ring--inner" aria-hidden="true"></div>
+        <div class="hero__image-clip">
+          <img
+            src="assets/images/profile-pic.png"
+            alt="Rohini Gaikwad — Frontend Engineer"
+            class="hero__photo"
+            width="360"
+            height="360"
+            loading="eager"
+            fetchpriority="high" />
+        </div>
+      </div>
+
+      <!-- Floating tech badges -->
+      <div class="hero__badge hero__badge--angular" aria-hidden="true">
+        <i class="devicon-angularjs-plain"></i>
+        Angular
+      </div>
+      <div class="hero__badge hero__badge--ts" aria-hidden="true">
+        <i class="devicon-typescript-plain"></i>
+        TypeScript
+      </div>
+      <div class="hero__badge hero__badge--js" aria-hidden="true">
+        <i class="devicon-javascript-plain"></i>
+        JavaScript
+      </div>
+      <div class="hero__badge hero__badge--node" aria-hidden="true">
+        <i class="devicon-nodejs-plain"></i>
+        Node.js
+      </div>
+      <div class="hero__badge hero__badge--react" aria-hidden="true">
+        <i class="devicon-react-original"></i>
+        React
+      </div>
+      <div class="hero__badge hero__badge--next" aria-hidden="true">
+        <i class="devicon-nextjs-original"></i>
+        Next.js
+      </div>
+      <div class="hero__badge hero__badge--mongo" aria-hidden="true">
+        <i class="devicon-mongodb-plain"></i>
+        MongoDB
+      </div>
+      <div class="hero__badge hero__badge--rxjs" aria-hidden="true">
+        <i class="fas fa-bolt"></i>
+        RxJS
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <a href="#about-section" class="hero__scroll" aria-label="Scroll to About section">
+    <span class="hero__scroll-icon" aria-hidden="true">
+      <i class="fas fa-chevron-down"></i>
+    </span>
+  </a>
+
+</section>

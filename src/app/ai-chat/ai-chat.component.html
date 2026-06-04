@@ -1,0 +1,93 @@
+<!-- Floating Action Button -->
+<button
+  class="chat-fab"
+  (click)="toggleChat()"
+  [class.chat-fab--open]="isOpen()"
+  [attr.aria-expanded]="isOpen()"
+  aria-label="Open AI assistant chat"
+  aria-controls="ai-chat-panel">
+  @if (isOpen()) {
+    <i class="fas fa-times" aria-hidden="true"></i>
+  } @else {
+    <i class="fas fa-robot" aria-hidden="true"></i>
+  }
+</button>
+
+<!-- Chat Panel -->
+@if (isOpen()) {
+  <div
+    id="ai-chat-panel"
+    class="chat-panel"
+    role="dialog"
+    aria-label="AI Resume Assistant"
+    aria-modal="false">
+
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="chat-header__avatar" aria-hidden="true">
+        <i class="fas fa-robot"></i>
+      </div>
+      <div class="chat-header__info">
+        <span class="chat-header__name">Resume Assistant</span>
+        <span class="chat-header__status">
+          <span class="chat-header__dot" aria-hidden="true"></span>
+          Ask me anything
+        </span>
+      </div>
+      <button class="chat-close" (click)="toggleChat()" aria-label="Close chat">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div class="chat-messages" #chatWindow role="log" aria-live="polite" aria-label="Chat messages">
+      @for (msg of messages(); track msg.timestamp) {
+        <div class="chat-msg" [class.chat-msg--user]="msg.role === 'user'" [class.chat-msg--bot]="msg.role === 'bot'">
+          @if (msg.role === 'bot') {
+            <div class="chat-msg__avatar" aria-hidden="true">
+              <i class="fas fa-robot"></i>
+            </div>
+          }
+          <div class="chat-msg__bubble">{{ msg.text }}</div>
+        </div>
+      }
+
+      @if (isTyping()) {
+        <div class="chat-msg chat-msg--bot" role="status" aria-label="Assistant is typing">
+          <div class="chat-msg__avatar" aria-hidden="true"><i class="fas fa-robot"></i></div>
+          <div class="chat-msg__bubble chat-msg__typing">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Quick suggestions -->
+    <div class="chat-suggestions" aria-label="Quick questions">
+      <button class="chat-suggestion" (click)="inputText.set('What are your skills?'); send()">Skills</button>
+      <button class="chat-suggestion" (click)="inputText.set('Tell me about your projects'); send()">Projects</button>
+      <button class="chat-suggestion" (click)="inputText.set('How can I contact you?'); send()">Contact</button>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input">
+      <input
+        type="text"
+        class="chat-input__field"
+        [ngModel]="inputText()"
+        (ngModelChange)="inputText.set($event)"
+        (keydown)="onKeydown($event)"
+        placeholder="Ask about skills, projects..."
+        aria-label="Type your message"
+        autocomplete="off" />
+      <button
+        class="chat-input__send"
+        (click)="send()"
+        [disabled]="!inputText().trim()"
+        aria-label="Send message">
+        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+      </button>
+    </div>
+
+  </div>
+}

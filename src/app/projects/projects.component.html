@@ -1,0 +1,109 @@
+<div class="section container projects">
+
+  <div class="section-header centered" data-aos="fade-up">
+    <span class="section-tag">Portfolio</span>
+    <h2 class="section-title">Projects I've built</h2>
+    <p class="section-subtitle">
+      Personal and professional projects demonstrating full-stack thinking,
+      Angular architecture depth, and production-quality engineering.
+    </p>
+  </div>
+
+  <div class="projects__grid">
+    @for (project of projects; track project.id) {
+      <article
+        class="project-card"
+        [class.project-card--featured]="project.featured"
+        data-aos="fade-up"
+        [attr.data-aos-delay]="80 * $index">
+
+        <!-- Card top bar -->
+        <div class="project-card__topbar">
+          <div class="project-card__icon" aria-hidden="true">
+            <i class="fas fa-code-branch"></i>
+          </div>
+          <div class="project-card__badges">
+            @if (project.featured) {
+              <span class="badge badge-accent">
+                <i class="fas fa-star" aria-hidden="true"></i> Featured
+              </span>
+            }
+            <span
+              class="badge project-status"
+              [class.project-status--live]="project.status === 'live'">
+              <span class="project-status__dot" aria-hidden="true"></span>
+              {{ project.status }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Title + description -->
+        <div class="project-card__body">
+          <h3 class="project-card__title">{{ project.title }}</h3>
+          <p class="project-card__description">{{ project.description }}</p>
+        </div>
+
+        <!-- Highlights -->
+        <ul class="project-card__highlights" aria-label="Key features">
+          @for (point of project.highlights; track point) {
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              {{ point }}
+            </li>
+          }
+        </ul>
+
+        <!-- Tech stack -->
+        <div class="project-card__tech" aria-label="Technologies used">
+          @for (t of project.tech; track t) {
+            <span class="badge">{{ t }}</span>
+          }
+        </div>
+
+        <!-- Actions -->
+        <div class="project-card__actions">
+          <a
+            [href]="project.githubUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline"
+            [attr.aria-label]="'View ' + project.title + ' source code on GitHub'">
+            <i class="fab fa-github" aria-hidden="true"></i>
+            Source Code
+          </a>
+          <a
+            [href]="project.liveUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+            [attr.aria-label]="'Open live demo of ' + project.title + ' (opens in new tab)'">
+            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            Live Demo
+          </a>
+        </div>
+
+      </article>
+    }
+  </div>
+
+  <!-- GitHub CTA -->
+  <div class="projects__cta" data-aos="fade-up">
+    <div class="projects__cta-content">
+      <i class="fab fa-github projects__cta-icon" aria-hidden="true"></i>
+      <div>
+        <p class="projects__cta-title">See more on GitHub</p>
+        <p class="projects__cta-sub">All projects are open source — explore the code.</p>
+      </div>
+    </div>
+    <a
+      href="https://github.com/rohinigaikwad7057"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-outline"
+      aria-label="View GitHub profile (opens in new tab)">
+      <i class="fab fa-github" aria-hidden="true"></i>
+      github.com/rohinigaikwad7057
+    </a>
+  </div>
+
+</div>

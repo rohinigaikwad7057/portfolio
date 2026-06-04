@@ -1,0 +1,107 @@
+<div class="section container resume">
+
+  <!-- Section header -->
+  <div class="section-header" data-aos="fade-up">
+    <span class="section-tag">My background</span>
+    <h2 class="section-title">Experience & Education</h2>
+    <p class="section-subtitle">
+      My professional journey building scalable web applications and delivering product-quality UI.
+    </p>
+  </div>
+
+  <!-- Summary bio -->
+  <div class="resume__summary" data-aos="fade-up" data-aos-delay="50">
+    <div class="resume__summary-icon" aria-hidden="true">
+      <i class="fas fa-user-tie"></i>
+    </div>
+    <p>
+      Frontend Engineer with 3.6 years at Infosys, specialising in Angular, TypeScript and RxJS.
+      I build modern, high-performance web applications with a strong focus on clean architecture,
+      accessibility, and real-world production quality.
+    </p>
+  </div>
+
+  <!-- Experience -->
+  <div class="resume__section" data-aos="fade-up" data-aos-delay="100">
+    <h3 class="resume__section-title">
+      <i class="fas fa-briefcase" aria-hidden="true"></i>
+      Work experience
+    </h3>
+
+    <div class="timeline">
+      @for (exp of experience; track exp.id) {
+        <article class="timeline__item">
+          <div class="timeline__dot" aria-hidden="true"></div>
+
+          <div class="timeline__card">
+            <div class="timeline__header">
+              <div>
+                <h4 class="timeline__role">{{ exp.title }}</h4>
+                <div class="timeline__company">
+                  <i class="fas fa-building" aria-hidden="true"></i>
+                  {{ exp.company }}
+                </div>
+              </div>
+              <div class="timeline__meta">
+                <span class="timeline__period">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  {{ exp.period }}
+                </span>
+                <span class="timeline__location">
+                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                  {{ exp.location }}
+                </span>
+                <span class="badge badge-accent">{{ exp.type }}</span>
+              </div>
+            </div>
+
+            <ul class="timeline__highlights" aria-label="Key achievements">
+              @for (point of exp.highlights; track point) {
+                <li class="timeline__highlight">
+                  <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                  {{ point }}
+                </li>
+              }
+            </ul>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="resume__section" data-aos="fade-up" data-aos-delay="150">
+    <h3 class="resume__section-title">
+      <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+      Education
+    </h3>
+
+    <div class="edu-grid">
+      @for (edu of education; track edu.id) {
+        <div class="edu-card">
+          <span class="edu-card__year">{{ edu.year }}</span>
+          <h4 class="edu-card__degree">{{ edu.degree }}</h4>
+          <p class="edu-card__institute">{{ edu.institute }}</p>
+          <div class="edu-card__grade">
+            <i class="fas fa-award" aria-hidden="true"></i>
+            {{ edu.grade }}
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="resume__cta" data-aos="fade-up">
+    <button class="btn btn-primary" (click)="downloadCV()" type="button"
+            aria-label="Download resume as PDF">
+      <i class="fas fa-download" aria-hidden="true"></i>
+      Download Full Resume (PDF)
+    </button>
+    <a href="#contact-section" class="btn btn-outline">
+      <i class="fas fa-paper-plane" aria-hidden="true"></i>
+      Let's talk
+    </a>
+  </div>
+
+</div>

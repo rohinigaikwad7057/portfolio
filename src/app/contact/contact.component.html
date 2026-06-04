@@ -1,0 +1,186 @@
+<div class="section container contact">
+
+  <div class="section-header centered" data-aos="fade-up">
+    <span class="section-tag">Get in touch</span>
+    <h2 class="section-title">Let's work together</h2>
+    <p class="section-subtitle">
+      I'm actively looking for Frontend Engineer roles in UAE and remote internationally.
+      Drop me a message and I'll respond within 24 hours.
+    </p>
+  </div>
+
+  <div class="contact__layout">
+
+    <!-- Left: Info tiles -->
+    <div class="contact__info" data-aos="fade-right">
+
+      <div class="contact__info-header">
+        <h3>Contact information</h3>
+        <p>Prefer email? Reach me directly at
+          <a href="mailto:rohinigaikwad7057@gmail.com">rohinigaikwad7057&#64;gmail.com</a>
+        </p>
+      </div>
+
+      <div class="contact__tiles">
+        @for (tile of contactTiles; track tile.label) {
+          @if (tile.href) {
+            <a
+              class="contact__tile"
+              [href]="tile.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="tile.ariaLabel">
+              <div class="contact__tile-icon">
+                <i [class]="tile.icon" aria-hidden="true"></i>
+              </div>
+              <div>
+                <span class="contact__tile-label">{{ tile.label }}</span>
+                <span class="contact__tile-value">{{ tile.value }}</span>
+              </div>
+            </a>
+          } @else {
+            <div class="contact__tile">
+              <div class="contact__tile-icon">
+                <i [class]="tile.icon" aria-hidden="true"></i>
+              </div>
+              <div>
+                <span class="contact__tile-label">{{ tile.label }}</span>
+                <span class="contact__tile-value">{{ tile.value }}</span>
+              </div>
+            </div>
+          }
+        }
+      </div>
+
+      <!-- Availability badge -->
+      <div class="contact__availability">
+        <span class="contact__avail-dot" aria-hidden="true"></span>
+        <span>Available for new opportunities</span>
+      </div>
+
+    </div>
+
+    <!-- Right: Form -->
+    <div class="contact__form-wrap" data-aos="fade-left" data-aos-delay="100">
+
+      @if (formStatus() === 'success') {
+        <div class="contact__success" role="alert">
+          <div class="contact__success-icon">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+          </div>
+          <h3>Message sent!</h3>
+          <p>{{ statusMessage() }}</p>
+          <button class="btn btn-outline" (click)="resetForm()" type="button">
+            Send another message
+          </button>
+        </div>
+      } @else {
+        <form
+          class="contact__form"
+          (ngSubmit)="onSubmit(contactForm)"
+          #contactForm="ngForm"
+          novalidate
+          aria-label="Contact form">
+
+          <div class="form-row">
+            <!-- Name -->
+            <div class="form-group">
+              <label for="contactName" class="form-label">Full name <span aria-hidden="true">*</span></label>
+              <input
+                id="contactName"
+                type="text"
+                class="form-input"
+                [(ngModel)]="formData.name"
+                name="name"
+                required
+                minlength="2"
+                placeholder="Rohini Gaikwad"
+                [ngClass]="{'form-input--error': contactForm.submitted && contactForm.controls['name'].invalid}"
+                autocomplete="name"
+                aria-required="true" />
+              @if (contactForm.submitted && contactForm.controls['name'].invalid) {
+                <span class="form-error" role="alert">Please enter your name (at least 2 characters)</span>
+              }
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Email address <span aria-hidden="true">*</span></label>
+              <input
+                id="contactEmail"
+                type="email"
+                class="form-input"
+                [(ngModel)]="formData.email"
+                name="email"
+                required
+                email
+                placeholder="you@example.com"
+                [ngClass]="{'form-input--error': contactForm.submitted && contactForm.controls['email'].invalid}"
+                autocomplete="email"
+                aria-required="true" />
+              @if (contactForm.submitted && contactForm.controls['email'].invalid) {
+                <span class="form-error" role="alert">Please enter a valid email address</span>
+              }
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="form-group">
+            <label for="contactSubject" class="form-label">Subject</label>
+            <input
+              id="contactSubject"
+              type="text"
+              class="form-input"
+              [(ngModel)]="formData.subject"
+              name="subject"
+              placeholder="Frontend Engineer opportunity"
+              autocomplete="off" />
+          </div>
+
+          <!-- Message -->
+          <div class="form-group">
+            <label for="contactMessage" class="form-label">Message <span aria-hidden="true">*</span></label>
+            <textarea
+              id="contactMessage"
+              class="form-input form-textarea"
+              [(ngModel)]="formData.message"
+              name="message"
+              required
+              minlength="10"
+              rows="5"
+              placeholder="Hi Rohini, I'd like to discuss a Frontend Engineer role..."
+              [ngClass]="{'form-input--error': contactForm.submitted && contactForm.controls['message'].invalid}"
+              aria-required="true"></textarea>
+            @if (contactForm.submitted && contactForm.controls['message'].invalid) {
+              <span class="form-error" role="alert">Please enter a message (at least 10 characters)</span>
+            }
+          </div>
+
+          @if (formStatus() === 'error') {
+            <div class="form-error-banner" role="alert">
+              <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+              {{ statusMessage() }}
+            </div>
+          }
+
+          <button
+            type="submit"
+            class="btn btn-primary form-submit"
+            [disabled]="formStatus() === 'sending'"
+            [attr.aria-busy]="formStatus() === 'sending'">
+            @if (formStatus() === 'sending') {
+              <span class="form-spinner" aria-hidden="true"></span>
+              Sending...
+            } @else {
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              Send Message
+            }
+          </button>
+
+        </form>
+      }
+
+    </div>
+  </div>
+
+</div>

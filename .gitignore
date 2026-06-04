@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Angular build output
+dist/
+docs/
+
+# Angular cache
+.angular/
+
+# IDE files
+.vscode/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional Mac / Windows files
+.DS_Store
+Thumbs.db

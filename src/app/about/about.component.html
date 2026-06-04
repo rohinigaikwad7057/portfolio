@@ -1,0 +1,91 @@
+<div class="section container about">
+
+  <div class="about__layout">
+
+    <!-- Left: Image + Stats -->
+    <div class="about__left" data-aos="fade-right">
+
+      <div class="about__image-wrap">
+        <div class="about__image-border" aria-hidden="true"></div>
+        <img
+          src="../../assets/images/profile-pic.png"
+          alt="Rohini Gaikwad"
+          class="about__image"
+          width="360"
+          height="360"
+          loading="lazy" />
+        <div class="about__location-badge" aria-label="Location: Abu Dhabi, UAE">
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          Abu Dhabi, UAE
+        </div>
+      </div>
+
+      <div class="about__stats">
+        @for (stat of stats; track stat.label) {
+          <div class="about__stat">
+            <i [class]="stat.icon + ' about__stat-icon'" aria-hidden="true"></i>
+            <div>
+              <span class="about__stat-value">{{ stat.value }}</span>
+              <span class="about__stat-label">{{ stat.label }}</span>
+            </div>
+          </div>
+        }
+      </div>
+
+    </div>
+
+    <!-- Right: Bio + Details -->
+    <div class="about__right" data-aos="fade-left" data-aos-delay="100">
+
+      <div class="section-header">
+        <span class="section-tag">About me</span>
+        <h2 class="section-title">Building impactful web experiences</h2>
+      </div>
+
+      <div class="about__bio">
+        <p>
+          I'm a Frontend Engineer with <strong>3.6 years</strong> of professional experience
+          specialising in <strong>Angular</strong> and <strong>React</strong>. At Infosys,
+          I built enterprise-grade applications including real-time analytics dashboards, chat
+          modules with WebSocket integration, and AI-assisted UI features.
+        </p>
+        <p>
+          I bring a product mindset to every project — focusing on performance, accessibility,
+          and clean component architecture. I have hands-on experience with RxJS state management,
+          REST API integration, and production monitoring with Sentry.
+        </p>
+        <p>
+          Currently based in <strong>Abu Dhabi</strong> and actively seeking Frontend Engineer
+          roles in UAE and international remote companies.
+        </p>
+      </div>
+
+      <!-- Details grid -->
+      <div class="about__details">
+        @for (detail of details; track detail.label) {
+          <div class="about__detail">
+            <i [class]="detail.icon" aria-hidden="true"></i>
+            <span class="about__detail-label">{{ detail.label }}:</span>
+            <span class="about__detail-value">{{ detail.value }}</span>
+          </div>
+        }
+      </div>
+
+      <!-- Actions -->
+      <div class="about__actions">
+        <a href="assets/Rohini_Gaikwad_Angular_React_Developer.pdf.pdf" target="_blank" rel="noopener noreferrer" download
+           class="btn btn-primary"
+           aria-label="Download Rohini's resume PDF">
+          <i class="fas fa-download" aria-hidden="true"></i>
+          Download Resume
+        </a>
+        <a href="#contact-section" class="btn btn-outline">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          Get in touch
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>

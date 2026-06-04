@@ -1,0 +1,78 @@
+<nav class="navbar" [ngClass]="navClasses()" role="navigation" aria-label="Main navigation">
+  <div class="nav-container">
+
+    <!-- Brand -->
+    <a class="nav-brand" href="#home-section" aria-label="Rohini Gaikwad - Home">
+      <span class="nav-brand__initials" aria-hidden="true">RG</span>
+      <span class="nav-brand__name">Rohini Gaikwad</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="nav-links" role="list">
+      @for (link of navLinks; track link.sectionId) {
+        <li>
+          <a
+            class="nav-link"
+            [class.nav-link--active]="isActive(link.sectionId)"
+            [href]="link.href"
+            [attr.aria-current]="isActive(link.sectionId) ? 'true' : null"
+            (click)="closeMobileMenu()">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- CTA -->
+    <a
+      href="assets/Rohini_Gaikwad_Angular_React_Developer.pdf.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      download
+      class="nav-cta btn btn-primary hide-mobile"
+      aria-label="Download Rohini's resume PDF">
+      <i class="fas fa-download" aria-hidden="true"></i>
+      Resume
+    </a>
+
+    <!-- Mobile toggle -->
+    <button
+      class="nav-toggle"
+      [class.nav-toggle--open]="isMobileOpen()"
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="isMobileOpen()"
+      aria-controls="mobile-menu"
+      aria-label="Toggle navigation menu">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div
+    id="mobile-menu"
+    class="nav-mobile"
+    [class.nav-mobile--open]="isMobileOpen()"
+    role="dialog"
+    [attr.aria-hidden]="!isMobileOpen()">
+    <ul role="list">
+      @for (link of navLinks; track link.sectionId) {
+        <li>
+          <a
+            class="nav-mobile__link"
+            [class.nav-mobile__link--active]="isActive(link.sectionId)"
+            [href]="link.href"
+            (click)="closeMobileMenu()">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+      <li>
+        <a href="assets/Rohini_Gaikwad_Angular_React_Developer.pdf.pdf" target="_blank" download class="btn btn-primary" style="margin-top:0.5rem">
+          <i class="fas fa-download" aria-hidden="true"></i> Download Resume
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
