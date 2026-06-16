@@ -10,7 +10,7 @@
   </div>
 
   <div class="projects__grid">
-    @for (project of projects; track project.id) {
+    @for (project of visibleProjects; track project.id) {
       <article
         class="project-card"
         [class.project-card--featured]="project.featured"
@@ -85,6 +85,18 @@
       </article>
     }
   </div>
+  @if (projects.length > visibleCount) {
+  <div class="projects__toggle" data-aos="fade-up">
+    <button class="btn btn-outline" (click)="toggleShowAll()">
+      @if (showAll) {
+        <i class="fas fa-chevron-up"></i> Show Less
+      } @else {
+        <i class="fas fa-chevron-down"></i>
+        Show All {{ projects.length }} Projects
+      }
+    </button>
+  </div>
+}
 
   <!-- GitHub CTA -->
   <div class="projects__cta" data-aos="fade-up">

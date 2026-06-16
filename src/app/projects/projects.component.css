@@ -17,7 +17,12 @@
   padding: 1.5rem 1.75rem;
   transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
-
+.projects__toggle {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .project-card:hover {
   border-color: var(--color-border-hover);
   transform: translateY(-4px);
