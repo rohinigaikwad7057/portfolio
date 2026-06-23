@@ -56,7 +56,7 @@ projects: Project[] = [
   },
   {
     id: 'task-manager',
-    title: 'Full Stack Task Manager',
+    title: 'Task & Workflow Manager',
     description: 'Production-ready task management app with JWT authentication, protected route guards, and real-time CRUD operations.',
     highlights: [
       'JWT authentication with Angular route guards',
